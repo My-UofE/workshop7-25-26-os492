@@ -5,8 +5,28 @@
 // Task 1a. Edit the definition to make Cylinder a subclass of Circle
 //         
 
-public class Cylinder {
-    
+public class Cylinder extends Circle{
+    private double height;
+
+    public Cylinder(){
+        super();
+        this.height = 1.0;
+    }
+
+    public Cylinder(double height){
+        super();
+        this.height = height;
+    }
+
+    public Cylinder (double height, double radius){
+        super(radius);
+        this.height = height;
+    }
+
+    public Cylinder (double height, double radius, String color){
+        super(radius, color);
+        this.height = height;
+    }
     // Task 1b. add additional private height attribute (double)
 
 
@@ -16,7 +36,13 @@ public class Cylinder {
     // 2-arg constructor (set height and radius to the given values)
     // 3-arg constructor (set height, radius, and color to the given values)
 
+    public double getHeight(){
+        return height;
+    }
 
+    public void setHeight(double height){
+        this.height = height;
+    }
     
     // Task 3. add getter and setter for height
     // (methods for radius and color are inherited)
@@ -24,10 +50,16 @@ public class Cylinder {
 
     // Task 4. add code for method getVolume()
     // make use of superclass' getArea() method
-
+    public double getVolume(){
+        double volume = getArea() * height;
+        return volume;
+    }
  
     // Task 5. Override toString() method to describe itself
     // (output format should be in line with format: Cylinder[Circle[...],height=X.XX]
 
-    
+    @Override
+    public String toString(){
+        return "Cylinder[" + super.toString() + ",height=" + height + "]";
+    } 
  }
